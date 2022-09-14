@@ -1,4 +1,5 @@
 import { CreateAdBanner } from "./components/CreateAdBanner";
+import { GameCard } from "./components/GameCard";
 import mainLogo from "./assets/logo_nlw-esports.svg";
 
 const App = () => (
@@ -14,48 +15,7 @@ const App = () => (
     </h1>
 
     <div className="grid grid-cols-6 gap-6 mb-8">
-      <a href="" className="relative rounded-lg overflow-hidden">
-        <img src="/game-1.png" />
-        <article className="bg-shadowGradient w-full pt-16 pb-4 px-4 absolute inset-x-0 bottom-0">
-          <h1 className="text-white font-bold block">League of Legends</h1>
-          <p className="text-zinc-400 text-sm block mt-1">4 anúncios</p>
-        </article>
-      </a>
-      <a href="" className="relative rounded-lg overflow-hidden">
-        <img src="/game-2.png" />
-        <article className="bg-shadowGradient w-full pt-16 pb-4 px-4 absolute inset-x-0 bottom-0">
-          <h1 className="text-white font-bold block">Dota 2</h1>
-          <p className="text-zinc-400 text-sm block mt-1">4 anúncios</p>
-        </article>
-      </a>
-      <a href="" className="relative rounded-lg overflow-hidden">
-        <img src="/game-3.png" />
-        <article className="bg-shadowGradient w-full pt-16 pb-4 px-4 absolute inset-x-0 bottom-0">
-          <h1 className="text-white font-bold block">Counter Strike</h1>
-          <p className="text-zinc-400 text-sm block mt-1">4 anúncios</p>
-        </article>
-      </a>
-      <a href="" className="relative rounded-lg overflow-hidden">
-        <img src="/game-5.png" />
-        <article className="bg-shadowGradient w-full pt-16 pb-4 px-4 absolute inset-x-0 bottom-0">
-          <h1 className="text-white font-bold block">Apex Legends</h1>
-          <p className="text-zinc-400 text-sm block mt-1">4 anúncios</p>
-        </article>
-      </a>
-      <a href="" className="relative rounded-lg overflow-hidden">
-        <img src="/game-6.png" />
-        <article className="bg-shadowGradient w-full pt-16 pb-4 px-4 absolute inset-x-0 bottom-0">
-          <h1 className="text-white font-bold block">Fortnite</h1>
-          <p className="text-zinc-400 text-sm block mt-1">4 anúncios</p>
-        </article>
-      </a>
-      <a href="" className="relative rounded-lg overflow-hidden">
-        <img src="/game-7.png" />
-        <article className="bg-shadowGradient w-full pt-16 pb-4 px-4 absolute inset-x-0 bottom-0">
-          <h1 className="text-white font-bold block">World of Warcraft</h1>
-          <p className="text-zinc-400 text-sm block mt-1">4 anúncios</p>
-        </article>
-      </a>
+        <GameCard banner="/game-1.png" title="title" ads={0} />
     </div>
       <CreateAdBanner />
   </section>
