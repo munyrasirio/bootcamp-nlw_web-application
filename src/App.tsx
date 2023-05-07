@@ -1,11 +1,13 @@
 import { useEffect, useState } from "react";
-
-import { CreateAdBanner } from "./components/CreateAdBanner";
-import { GameCard } from "./components/GameCard";
+import * as RDialog from "@radix-ui/react-dialog";
 
 import mainLogo from "./assets/logo_nlw-esports.svg";
 import "./styles/main.css";
+
 import { GameProps } from "./@types";
+import CreateAdBanner from "./components/CreateAdBanner";
+import CreateAdDialog from "./components/CreateAdDialog";
+import { GameCard } from "./components/GameCard";
 
 const App = () => {
   const [games, setGames] = useState<GameProps[]>([]);
@@ -34,7 +36,10 @@ const App = () => {
           <GameCard key={`${title}-${index}`} {...{ banner, title, ads }} />
         ))}
       </div>
-      <CreateAdBanner />
+      <RDialog.Root>
+        <CreateAdBanner />
+        <CreateAdDialog games={games} />
+      </RDialog.Root>
     </section>
   );
 };
