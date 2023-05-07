@@ -4,13 +4,10 @@ import * as RSelect from "@radix-ui/react-select";
 import * as RToggleGroup from "@radix-ui/react-toggle-group";
 import { CaretDown, Check, GameController } from "phosphor-react";
 import { useState } from "react";
+import { ICreateAdDialog } from "../../@types";
 import { weekDays } from "../../utils/variables";
 import { Input } from "../Form/Input";
 import SelectItem from "../Form/SelectItem";
-
-interface ICreateAdDialog {
-  games: Array<{ [key: string]: string }>;
-}
 
 const CreateAdDialog = ({ games }: ICreateAdDialog) => {
   const [selectedWeekDays, setSelectedWeekDays] = useState<string[]>([]);

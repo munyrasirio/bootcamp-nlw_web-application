@@ -1,10 +1,6 @@
 import * as RSelect from "@radix-ui/react-select";
 import { Check } from "phosphor-react";
-
-interface ISelectItem {
-  title: string;
-  id: string;
-}
+import { ISelectItem } from "../../@types";
 
 const SelectItem = ({ title, id }: ISelectItem) => (
   <RSelect.Item value={id} className="relative py-1 pl-6 cursor-pointer">
