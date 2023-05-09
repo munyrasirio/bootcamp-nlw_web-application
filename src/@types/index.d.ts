@@ -19,3 +19,18 @@ export interface ISelectItem {
   title: string;
   id: string;
 }
+
+export interface IAd {
+  discord: string;
+  hourEnd: string;
+  hourStart: string;
+  name: string;
+  useVoiceChannel: boolean;
+  weekDays: number[];
+  yearsPlaying: number;
+}
+
+export type TAdFormData = Omit<IAd, "weekDays" | "yearsPlaying"> & {
+  weekDays: string[];
+  yearsPlaying: string;
+};
