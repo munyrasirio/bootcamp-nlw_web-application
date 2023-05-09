@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import axios from "axios";
 import * as RDialog from "@radix-ui/react-dialog";
 
 import mainLogo from "./assets/logo_nlw-esports.svg";
@@ -13,9 +14,8 @@ const App = () => {
   const [games, setGames] = useState<GameProps[]>([]);
 
   useEffect(() => {
-    fetch("http://localhost:3333/games")
-      .then((response) => response.json())
-      .then((games) => setGames(games))
+    axios("http://localhost:3333/games")
+      .then((response) => setGames(response.data))
       .catch((err) => console.log(err));
   }, []);
 
