@@ -1,20 +1,39 @@
+import { useState, FormEvent } from "react";
+import axios from "axios";
 import * as RCheckbox from "@radix-ui/react-checkbox";
 import * as RDialog from "@radix-ui/react-dialog";
 import * as RSelect from "@radix-ui/react-select";
 import * as RToggleGroup from "@radix-ui/react-toggle-group";
 import { CaretDown, Check, GameController } from "phosphor-react";
-import { useState } from "react";
-import { ICreateAdDialog } from "../../@types";
-import { weekDays } from "../../utils/variables";
+
 import { Input } from "../Form/Input";
 import SelectItem from "../Form/SelectItem";
-import { ISelectItem } from "../../@types";
+
+import { ICreateAdDialog, ISelectItem, TAdFormData } from "../../@types";
+import { parseAdData } from "../../helpers/CreateAd.helper";
+import { weekDays } from "../../utils/variables";
 
 const CreateAdDialog = ({ games }: ICreateAdDialog) => {
+  const [game, setGame] = useState("");
   const [selectedWeekDays, setSelectedWeekDays] = useState<string[]>([]);
+  const [useVoiceChannel, setUseVoiceChannel] = useState<boolean>(false);
 
   const setBGWhenSelected = (value: string) =>
     selectedWeekDays.includes(value) ? "bg-violet-500" : "bg-zinc-900";
+
+  const handleCreateAd = (event: FormEvent) => {
+    event.preventDefault();
+
+    const formData = new FormData(event.target as HTMLFormElement);
+    const data = {
+      ...Object.fromEntries(formData),
+      weekDays: selectedWeekDays,
+      useVoiceChannel,
+    } as TAdFormData;
+
+    const parsedData = parseAdData(data);
+    axios.post(`http://localhost:3333/games/${game}/ads`, parsedData);
+  };
 
   return (
     <RDialog.Portal>
@@ -23,14 +42,14 @@ const CreateAdDialog = ({ games }: ICreateAdDialog) => {
         <RDialog.Title className="text-3xl font-black">
           Publique um anúncio
         </RDialog.Title>
-        <form className="flex flex-col gap-4 mt-8">
+        <form onSubmit={handleCreateAd} className="flex flex-col gap-4 mt-8">
           <div className="flex flex-col gap-2">
-            <RSelect.Root>
+            <RSelect.Root value={game} onValueChange={setGame}>
               <label htmlFor="select__game" className="font-semibold">
                 Qual o game?
               </label>
               <RSelect.Trigger
-                className="flex justify-between items-center bg-zinc-900 py-3 px-4 rounded text-small "
+                className="flex justify-between items-center bg-zinc-900 py-3 px-4 rounded text-small"
                 aria-label="Qual o game?"
                 id="select__game"
               >
@@ -130,6 +149,10 @@ const CreateAdDialog = ({ games }: ICreateAdDialog) => {
           </div>
           <div className="flex gap-2 text-sm mt-2 items-center">
             <RCheckbox.Root
+              checked={useVoiceChannel}
+              onCheckedChange={(checked) =>
+                setUseVoiceChannel(checked === true ? true : false)
+              }
               className="w-6 h-6 p-1 rounded bg-zinc-900"
               id="checkbox__discord"
             >
