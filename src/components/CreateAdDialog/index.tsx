@@ -32,7 +32,14 @@ const CreateAdDialog = ({ games }: ICreateAdDialog) => {
     } as TAdFormData;
 
     const parsedData = parseAdData(data);
-    axios.post(`http://localhost:3333/games/${game}/ads`, parsedData);
+
+    if (!data.name) return;
+
+    try {
+      axios.post(`http://localhost:3333/games/${game}/ads`, parsedData);
+    } catch (err) {
+      console.log(err);
+    }
   };
 
   return (
