@@ -3,6 +3,7 @@ import { InputHTMLAttributes } from "react";
 export interface GameProps {
   banner: string;
   title: string;
+  id: string;
   ads: number;
 }
 

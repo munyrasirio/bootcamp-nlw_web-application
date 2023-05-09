@@ -8,6 +8,7 @@ import { ICreateAdDialog } from "../../@types";
 import { weekDays } from "../../utils/variables";
 import { Input } from "../Form/Input";
 import SelectItem from "../Form/SelectItem";
+import { ISelectItem } from "../../@types";
 
 const CreateAdDialog = ({ games }: ICreateAdDialog) => {
   const [selectedWeekDays, setSelectedWeekDays] = useState<string[]>([]);
@@ -49,7 +50,7 @@ const CreateAdDialog = ({ games }: ICreateAdDialog) => {
                       <RSelect.Label className="text-zinc-500">
                         Selecione o game que deseja jogar
                       </RSelect.Label>
-                      {games.map(({ title, id }: { [key: string]: string }) => (
+                      {games.map(({ title, id }: ISelectItem) => (
                         <SelectItem
                           key={`select__${title}-${id}`}
                           {...{ title, id }}
