@@ -5,9 +5,9 @@
 <br/>
 
 <p align="center"> 
-  <img src='https://img.shields.io/github/languages/count/munyrasirio/bootcamp-nlw_web-application?style=flat-square'>
-  <img src='https://img.shields.io/github/license/munyrasirio/bootcamp-nlw_web-application?style=flat-square'>
-  <img src='https://img.shields.io/github/languages/code-size/munyrasirio/bootcamp-nlw_web-application?style=flat-square'>
+  <img src='https://img.shields.io/github/languages/count/munyrasirio/bootcamp-nlw_web-application?style=for-the-badge'>
+  <img src='https://img.shields.io/github/license/munyrasirio/bootcamp-nlw_web-application?style=for-the-badge'>
+  <img src='https://img.shields.io/github/languages/code-size/munyrasirio/bootcamp-nlw_web-application?style=for-the-badge'>
 </p>
 
 <p align="center"> 
